@@ -23,7 +23,9 @@ const GptResponse: React.FC = () => {
       </form>
       {error && <h3>{error}</h3>}
       {loading && <h3>Loading...</h3>}
-      {!error && !loading && data && data.choices[0].text}
+      {!error && !loading && data && data.choices && (
+        <h3>{data.choices[0].text}</h3>
+      )}
     </div>
   );
 };
