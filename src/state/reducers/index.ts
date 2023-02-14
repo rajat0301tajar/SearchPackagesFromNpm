@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import repositoriesReducer from "./repositoriesReducer";
+import gptReducer from "./gptReducer";
 
 const reducers = combineReducers({
   repositories: repositoriesReducer,
+  gptResponse: gptReducer,
 });
 
 export default reducers;

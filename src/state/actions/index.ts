@@ -14,7 +14,24 @@ interface SearchRepositoriesErrorAction {
   payload: string;
 }
 
+interface GetGptPromptResponseAction {
+  type: ActionType.GET_GPT_PROMPT_RESPONSE;
+}
+
+interface GetGptPromptResponseSuccessAction {
+  type: ActionType.GET_GPT_PROMPT_RESPONSE_SUCCESS;
+  payload: any;
+}
+
+interface GetGptPromptResponseErrorAction {
+  type: ActionType.GET_GPT_PROMPT_RESPONSE_ERROR;
+  payload: string;
+}
+
 export type Action =
   | SearchRepositoriesAction
   | SearchRepositoriesSuccessAction
-  | SearchRepositoriesErrorAction;
+  | SearchRepositoriesErrorAction
+  | GetGptPromptResponseAction
+  | GetGptPromptResponseSuccessAction
+  | GetGptPromptResponseErrorAction;

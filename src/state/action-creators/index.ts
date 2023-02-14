@@ -35,3 +35,33 @@ export const searchRepositories = (term: string) => {
     }
   };
 };
+
+export const getChatGptResponse = (prompt: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.GET_GPT_PROMPT_RESPONSE,
+    });
+
+    try {
+      const { data } = await axios.post(
+        "https://assistgpt.openai.azure.com/openai/deployments/AssistTextGPT/completions?api-version=2022-12-01",
+        { prompt },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "API-KEY": "",
+          },
+        }
+      );
+      dispatch({
+        type: ActionType.GET_GPT_PROMPT_RESPONSE_SUCCESS,
+        payload: data,
+      });
+    } catch (err: any) {
+      dispatch({
+        type: ActionType.GET_GPT_PROMPT_RESPONSE_ERROR,
+        payload: err?.message,
+      });
+    }
+  };
+};
